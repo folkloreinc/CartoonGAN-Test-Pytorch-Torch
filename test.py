@@ -61,10 +61,10 @@ h = input_image.size[0]
 w = input_image.size[1]
 ratio = h * 1.0 / w
 if ratio > 1:
-    h = opt.load_size
+    h = int(opt.load_size)
     w = int(h * 1.0 / ratio)
 else:
-    w = opt.load_size
+    w = int(opt.load_size)
     h = int(w * ratio)
 
 input_image = input_image.resize((h, w), Image.BICUBIC)
