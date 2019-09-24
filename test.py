@@ -15,7 +15,7 @@ from network.Transformer import Transformer
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_file", default="input/test.jpg")
-parser.add_argument("--load_size", default=500)
+parser.add_argument("--load_size", default=700)
 parser.add_argument(
     "--model_path", default="./pretrained_model",
 )
