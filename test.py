@@ -89,7 +89,7 @@ output_image = output_image[[2, 1, 0], :, :]
 # deprocess, (0, 1)
 output_image = output_image.data.cpu().float() * 0.5 + 0.5
 
-dest = os.path.join(opt.output_dir, basename[:-4] + "_" + opt.style + ".jpg")
+dest = os.path.join(opt.output_dir, basename[:-4] + "_" + opt.style + ".png")
 
 # save
 vutils.save_image(output_image, dest)
