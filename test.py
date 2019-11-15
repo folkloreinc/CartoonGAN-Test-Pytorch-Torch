@@ -19,7 +19,7 @@ parser.add_argument("--load_size", default=500)
 parser.add_argument("--model_path", default="./pretrained_model")
 parser.add_argument("--style", default="Paprika")
 parser.add_argument("--output_dir", default="output")
-parser.add_argument("--gpu", type=int, default=-1)
+parser.add_argument("--gpu", type=int, default=1)
 
 opt = parser.parse_args()
 
