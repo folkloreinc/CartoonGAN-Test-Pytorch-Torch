@@ -2,6 +2,7 @@
 
 import torch
 import os
+import time
 
 import numpy as np
 import argparse
@@ -13,6 +14,8 @@ from network.Transformer import Transformer
 # import sys
 # from torch.autograd import Variable
 
+start = time.perf_counter()
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_file", default="input/test-large.jpg")
 parser.add_argument("--load_size", default=800)
@@ -23,7 +26,7 @@ parser.add_argument("--gpu", type=int, default=1)
 
 opt = parser.parse_args()
 
-valid_ext = [".jpg", ".png"]
+valid_ext = [".jpg", ".png", ".jpeg", ".gif"]
 
 if not os.path.exists(opt.output_dir):
     os.mkdir(opt.output_dir)
@@ -74,6 +77,10 @@ input_image = transforms.ToTensor()(input_image).unsqueeze(0)
 # preprocess, (-1, 1)
 input_image = -1 + 2 * input_image
 
+print("Start Crunching")
+before = time.perf_counter()
+# run your code
+
 with torch.no_grad():
     if opt.gpu > -1:
         input_image = input_image.cuda()
@@ -89,6 +96,9 @@ output_image = output_image[[2, 1, 0], :, :]
 # deprocess, (0, 1)
 output_image = output_image.data.cpu().float() * 0.5 + 0.5
 
+after = time.perf_counter()
+print("End")
+
 dest = os.path.join(opt.output_dir, basename[:-4] + "_" + opt.style + ".png")
 
 # save
@@ -97,6 +107,12 @@ vutils.save_image(output_image, dest)
 # print("Done!")
 
 print(dest)
+end = time.perf_counter()
+
+elapsedAll = end - start
+elapsedGpu = after - before
+
+print("Timer", elapsedAll, elapsedGpu)
 
 # sys.stdout.write(dest + "\n")
 # sys.stdout.flush()
