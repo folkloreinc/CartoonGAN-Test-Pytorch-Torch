@@ -14,8 +14,8 @@ from network.Transformer import Transformer
 # from torch.autograd import Variable
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--input_file", default="input/test.jpg")
-parser.add_argument("--load_size", default=500)
+parser.add_argument("--input_file", default="input/test-large.jpg")
+parser.add_argument("--load_size", default=1000)
 parser.add_argument("--model_path", default="./pretrained_model")
 parser.add_argument("--style", default="Paprika")
 parser.add_argument("--output_dir", default="output")
