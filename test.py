@@ -18,11 +18,11 @@ start = time.perf_counter()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_file", default="input/test-large.jpg")
-parser.add_argument("--load_size", default=800)
+parser.add_argument("--load_size", default=400)
 parser.add_argument("--model_path", default="./pretrained_model")
 parser.add_argument("--style", default="Paprika")
 parser.add_argument("--output_dir", default="output")
-parser.add_argument("--gpu", type=int, default=1)
+parser.add_argument("--gpu", type=int, default=-1)
 
 opt = parser.parse_args()
 
